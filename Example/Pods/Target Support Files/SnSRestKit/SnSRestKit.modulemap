@@ -1,0 +1,6 @@
+framework module SnSRestKit {
+  umbrella header "SnSRestKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

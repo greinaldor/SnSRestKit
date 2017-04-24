@@ -1,0 +1,6 @@
+framework module Pods_SnSRestKit_Tests {
+  umbrella header "Pods-SnSRestKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
