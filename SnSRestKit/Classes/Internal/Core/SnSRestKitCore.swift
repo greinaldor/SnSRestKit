@@ -8,7 +8,7 @@
 
 import Foundation
 
-final internal class SnSRestKitCore : SnSRestModule {
+final class SnSRestKitCore : SnSRestModule {
     
     /// The DispatchQueue to access internal core modules
     //fileprivate var _controllerAccessorQueue : DispatchQueue
@@ -17,15 +17,15 @@ final internal class SnSRestKitCore : SnSRestModule {
     public private(set) lazy var requestController : SnSRestRequestController? = nil
     
     override func loadModule() {
-        
-        SnSRestConsoleLogger.log("SnSRestKitCore : Loading Module...")
-        
         // Instantiate the desired request's controller depending on cahing preferences.
-        getModulesProvider()?.requestRunner
-        
         requestController = (SnSRestKit.isCachingEnabled()) ?
-            SnSRestCachedRequestController(withModulesDataSource: self.getModulesProvider()!) :
-            SnSRestRequestController(withModulesDataSource: self.getModulesProvider()!)
+            SnSRestCachedRequestController(withModulesDataSource: self.dataSource()!) :
+            SnSRestRequestController(withModulesDataSource: self.dataSource()!)
+    }
+    
+    override func unloadModule() {
+        SnSRestConsoleLogger.log("SnSRestKitCore : Unloading Module...")
+
     }
     
 }

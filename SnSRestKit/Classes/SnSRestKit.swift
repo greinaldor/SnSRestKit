@@ -32,17 +32,21 @@ public struct SnSRestKitConfiguration {
  */
 final public class SnSRestKit {
     
-    internal static var _coreManager: SnSRestKitManager? = nil
-    internal static var _configuration = SnSRestKitConfiguration(baseApiUrl: nil,
-                                                                 loggingEnable: false,
-                                                                 cacheEnable: false)
-    
-    private static var _initialized: Bool {
-        return (_coreManager != nil)
+    static var _coreManager: SnSRestKitManager! = nil;
+    static var _configuration = SnSRestKitConfiguration(baseApiUrl: nil,
+                                                        loggingEnable: false,
+                                                        cacheEnable: false)
+    static var isCachingEnabled = {
+        return SnSRestKit._configuration.cacheEnable
     }
     
-    public static func isCachingEnabled() -> Bool { return _configuration.cacheEnable }
-    public static func isLoggingEnabled() -> Bool { return _configuration.loggingEnable }
+    static var isLoggingEnabled = {
+        return SnSRestKit._configuration.loggingEnable
+    }
+    
+    fileprivate static var _initialized = {
+        return (_coreManager != nil)
+    }
     
     // MARK: Initializers
     
@@ -55,29 +59,30 @@ final public class SnSRestKit {
     }
     
     /**
-     Initialize SnSRestKit with configuration handler. The KitConfigurationHandler provide a KitConfiguration to customize for you needs.
+     Initialize SnSRestKit with configuration handler. The KitConfigurationHandler provide a KitConfiguration reference to customize for you needs.
      
      - important: This method should be called prior using SnSRestKit.
      
      - parameters:
         - closure: The KitConfigurationHandler closure with configuration to customize.
      */
-    public static func initializeRestKit(withKitConfigurationHandler closure: KitConfigurationHandler) {
-        if !_initialized {
+    public static func initializeRestKit(withConfigurationClosure closure: KitConfigurationHandler) {
+        if !_initialized() {
             // Set the default settings for SnSRestKit behaviour
             var config = SnSRestKitConfiguration(baseApiUrl: nil,
-                                                 // Set the default logging behaviour.
-                loggingEnable: false,
-                // Set the default caching behaviour.
-                cacheEnable: true)
+                                                 loggingEnable: false,
+                                                 cacheEnable: true)
             // Pass configuration to closure
             closure(&config)
             // Copy new configuration
             _configuration = config
             
             // Intsantiate the core manager providing the kit configuration
-            _coreManager = SnSRestKitManager(withKitConfiguration: _configuration)
+            _coreManager = SnSRestKitManager(withConfiguration: _configuration)
             _coreManager?.launchKit()
+            
+            _coreManager = nil
+            
         } else {
             print("<SnSRestKit> Already initialized once.")
         }

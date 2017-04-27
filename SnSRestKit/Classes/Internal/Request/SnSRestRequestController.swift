@@ -9,10 +9,14 @@
 import Foundation
 import BoltsSwift
 
-internal class SnSRestRequestController : SnSRestModule {
+class SnSRestRequestController : SnSRestModule {
     
-    internal lazy var _controllerOperationsQueue : DispatchQueue? = nil
+    fileprivate lazy var _controllerOperationsQueue : DispatchQueue? = nil
     
+    /**
+     Load internal modules instances. Called during initialization.
+     - warning: This method shouln't be called directly.
+     */
     override func loadModule() {
         _controllerOperationsQueue = DispatchQueue(label: "com.snsrest.request.controllerOperationQueue",
                                                    qos: .utility,
@@ -21,6 +25,10 @@ internal class SnSRestRequestController : SnSRestModule {
                                                    target: nil)
     }
 
+    /**
+     Unload internal modules instances. Called during initialization.
+     - warning: This method shouln't be called directly.
+     */
     override func unloadModule() {
         _controllerOperationsQueue = nil
     }

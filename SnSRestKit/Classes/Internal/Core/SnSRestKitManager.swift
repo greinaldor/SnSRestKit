@@ -11,15 +11,28 @@ import BoltsSwift
 
 typealias SnSBoltTask = Task<Bool>
 
-final internal class SnSRestKitManager : SnSRestKitManagerModules {
+final class SnSRestKitManager : SnSRestKitManagerModules {
     
-    lazy fileprivate var _core: SnSRestKitCore? = nil;
+    fileprivate var _requestRunnerAccessQueue: DispatchQueue
+    fileprivate var _core: SnSRestKitCore?
     
-    lazy var requestRunner: SnSRestRequestRunning? = nil;
-    lazy var sessionController: Any? = nil;
+    fileprivate var _requestRunner: SnSRestRequestExecutor?
     
-    private init() {}
-    public convenience init?(withKitConfiguration configuration : SnSRestKitConfiguration) {
+    lazy var requestRunner: SnSRestRequestRunner? = { _ in
+        return self._requestRunnerAccessQueue.sync {
+            self._requestRunner = SnSRestRequestExecutor(withModulesDataSource: self)
+            return self._requestRunner
+        }
+    }()
+
+    var sessionController: Any?;
+    
+    private init() {
+        _requestRunnerAccessQueue = DispatchQueue(label: "com.snsrest.coreManager.requestRunner.accessQueue")
+        
+    }
+    
+    public convenience init(withConfiguration configuration : SnSRestKitConfiguration) {
         self.init()
         
         SnSRestConsoleLogger.log("SnSRestKitManager : Initializing")
@@ -28,7 +41,17 @@ final internal class SnSRestKitManager : SnSRestKitManagerModules {
         _core = SnSRestKitCore(withModulesDataSource: self)
     }
     
-    internal func launchKit() {
+    deinit {
+        _requestRunner = nil
+        _core = nil
+    }
+    
+    func launchKit() {
         SnSRestConsoleLogger.log("SnSRestKitManager : Launching")
+                
+        if let requestController = _core?.requestController {
+            requestController.modulesAccessExecutor
+        }
+        
     }
 }

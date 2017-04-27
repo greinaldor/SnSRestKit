@@ -8,21 +8,25 @@
 
 import Foundation
 
-internal protocol SnSRestKitManagerModules :
+protocol SnSRestKitManagerModules :
     class,
     SnSRestRequestRunnerProvider,
     SnSRestSessionControllerProvider {}
 
 extension SnSRestModulepInterface {
-    public func getModulesProvider() -> SnSRestKitManagerModules? {
+    public func dataSource() -> SnSRestKitManagerModules? {
         return modulesProvider as? SnSRestKitManagerModules
     }
 }
 
-internal protocol SnSRestRequestRunnerProvider {
-    var requestRunner : SnSRestRequestRunning? { get }
+/*
+ In
+ */
+typealias SnSRestRequestRunner = SnSRestRequestRunning & SnSRestModuleProtocol
+protocol SnSRestRequestRunnerProvider {
+    var requestRunner : SnSRestRequestRunner? { get }
 }
 
-internal protocol SnSRestSessionControllerProvider {
+protocol SnSRestSessionControllerProvider {
     var sessionController : Any? { get }
 }

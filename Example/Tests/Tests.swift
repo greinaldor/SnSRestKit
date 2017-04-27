@@ -2,7 +2,8 @@
 
 import Quick
 import Nimble
-import SnSRestKit
+
+@testable import SnSRestKit
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {

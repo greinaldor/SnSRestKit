@@ -9,31 +9,36 @@
 import Foundation
 import BoltsSwift
 
-internal typealias SnSRestModule = SnSRestModulepInterface<AnyObject>
+typealias SnSRestModule = SnSRestModulepInterface<AnyObject>
 
-internal protocol SnSRestKitModuleProtocol {    
+protocol SnSRestModuleProtocol {
+    
+    var moduleName: String { get }
+
     func loadModule()
     func unloadModule()
 }
 
-internal class SnSRestModulepInterface< T : AnyObject > : SnSRestKitModuleProtocol {
+class SnSRestModulepInterface< ModulesDataSourceProvider : AnyObject > : SnSRestModuleProtocol {
     
-    internal private(set) weak var modulesProvider:  T? = nil
-    internal let moduleName : String
-    internal private(set) var moduleExecutor : Executor
-    private  var moduleAccessQueue : DispatchQueue
+    private(set) weak var modulesProvider:  ModulesDataSourceProvider? = nil
+    public private(set) var moduleName : String
+    private(set) var modulesAccessExecutor : Executor
+    private var moduleAccessQueue : DispatchQueue
     
-    internal func loadModule() { fatalError("Should be overiddent in subclass") }
-    internal func unloadModule() { fatalError("Should be overriden in subsclass") }
+    func loadModule() { fatalError("Should be overidden in subclass") }
+    func unloadModule() {
+        modulesProvider = nil
+    }
     
-    internal init() {
+    init() {
         moduleName = "com.\(String(reflecting: type(of: self)).lowercased())"
         SnSRestConsoleLogger.log("\(moduleName): Initializing module")
         moduleAccessQueue = DispatchQueue(label: moduleName.lowercased() + ".moduleAccessQueue")
-        moduleExecutor = Executor.queue(moduleAccessQueue)
+        modulesAccessExecutor = Executor.queue(moduleAccessQueue)
     }
     
-    public convenience init(withModulesDataSource dataSource : T) {
+    public convenience init(withModulesDataSource dataSource : ModulesDataSourceProvider) {
         self.init()
         modulesProvider = dataSource
         loadModule()
@@ -47,7 +52,7 @@ internal class SnSRestModulepInterface< T : AnyObject > : SnSRestKitModuleProtoc
 /// Module extended with Bolts features
 extension SnSRestModulepInterface {
     func taskFromModuleExecutor(closure: @escaping ((Void) throws -> Any)) -> Task<Any> {
-        return Task.init(moduleExecutor, closure: closure)
+        return Task.init(self.modulesAccessExecutor, closure: closure)
     }
     
 }

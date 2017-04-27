@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class SnSRestRequest {
+final public class SnSRestRequest {
     
 }

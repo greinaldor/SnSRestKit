@@ -14,5 +14,5 @@ enum SnSRestRequestRunningOptions {
 }
 
 protocol SnSRestRequestRunning {
-    func runRequestAsync(_ request: SnSRestRequest, withOptions: SnSRestRequestRunningOptions) -> Task<Any>
+    func runRequestAsync(_ request: SnSRestRequest,_ withOptions: SnSRestRequestRunningOptions) -> Task<Any>
 }

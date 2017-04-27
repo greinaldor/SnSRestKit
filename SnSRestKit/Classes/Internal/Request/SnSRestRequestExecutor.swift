@@ -9,10 +9,17 @@
 import Foundation
 import BoltsSwift
 
-internal class SnSRestRequestExecutor: SnSRestModule, SnSRestRequestRunning {
+final class SnSRestRequestExecutor: SnSRestModule, SnSRestRequestRunning {
     
-    func runRequestAsync(_ request: SnSRestRequest, withOptions: SnSRestRequestRunningOptions) -> Task<Any> {
-        return Task.init(true);
+    override func loadModule() {
+        
     }
     
+    override func unloadModule() {
+        SnSRestConsoleLogger.log("SnSRestKitCore : Unloading Module...")
+    }
+    
+    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> Task<Any> {
+        return Task.init(true);
+    }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class SnSRestConsoleLogger {
+class SnSRestConsoleLogger {
     
     public static func log(_ message : String) {
         if (SnSRestKit.isLoggingEnabled()) {
