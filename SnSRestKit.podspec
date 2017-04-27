@@ -36,8 +36,9 @@ TODO: Add long description of the pod here.
   #   'SnSRestKit' => ['SnSRestKit/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'SystemConfiguration'
+
   s.dependency 'Alamofire', '>= 4.4.0'
   s.dependency 'Bolts-Swift', '>= 1.3.0'
+  s.dependency 'SwiftLint'
 end

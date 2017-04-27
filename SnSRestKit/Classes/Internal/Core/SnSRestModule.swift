@@ -19,12 +19,12 @@ protocol SnSRestModuleProtocol {
     func unloadModule()
 }
 
-class SnSRestModulepInterface< ModulesDataSourceProvider : AnyObject > : SnSRestModuleProtocol {
+class SnSRestModulepInterface<ModulesDataSourceT: AnyObject>: SnSRestModuleProtocol {
     
-    private(set) weak var modulesProvider:  ModulesDataSourceProvider? = nil
-    public private(set) var moduleName : String
-    private(set) var modulesAccessExecutor : Executor
-    private var moduleAccessQueue : DispatchQueue
+    private(set) weak var modulesProvider: ModulesDataSourceT?
+    public private(set) var moduleName: String
+    private(set) var modulesAccessExecutor: Executor
+    private var moduleAccessQueue: DispatchQueue
     
     func loadModule() { fatalError("Should be overidden in subclass") }
     func unloadModule() {
@@ -38,7 +38,7 @@ class SnSRestModulepInterface< ModulesDataSourceProvider : AnyObject > : SnSRest
         modulesAccessExecutor = Executor.queue(moduleAccessQueue)
     }
     
-    public convenience init(withModulesDataSource dataSource : ModulesDataSourceProvider) {
+    public convenience init(withModulesDataSource dataSource: ModulesDataSourceT) {
         self.init()
         modulesProvider = dataSource
         loadModule()

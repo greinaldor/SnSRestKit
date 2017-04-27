@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias KitConfigurationHandler = (inout SnSRestKitConfiguration) -> Void
+public typealias KitConfigurationHandler = (inout SnSRestKitConfiguration) -> Void
 
 public struct SnSRestKitConfiguration {
     public var baseApiUrl: String?
@@ -32,21 +32,16 @@ public struct SnSRestKitConfiguration {
  */
 final public class SnSRestKit {
     
-    static var _coreManager: SnSRestKitManager! = nil;
-    static var _configuration = SnSRestKitConfiguration(baseApiUrl: nil,
-                                                        loggingEnable: false,
-                                                        cacheEnable: false)
-    static var isCachingEnabled = {
-        return SnSRestKit._configuration.cacheEnable
-    }
-    
-    static var isLoggingEnabled = {
-        return SnSRestKit._configuration.loggingEnable
-    }
-    
-    fileprivate static var _initialized = {
+    private static var _coreManager: SnSRestKitManager?
+    private static var _configuration = SnSRestKitConfiguration(baseApiUrl: nil,
+                                                                    loggingEnable: false,
+                                                                    cacheEnable: false)
+    fileprivate static var _initialized: Bool {
         return (_coreManager != nil)
     }
+    
+    public static var isCachingEnabled = { SnSRestKit._configuration.cacheEnable }
+    public static var isLoggingEnabled = { SnSRestKit._configuration.loggingEnable }
     
     // MARK: Initializers
     
@@ -67,7 +62,7 @@ final public class SnSRestKit {
         - closure: The KitConfigurationHandler closure with configuration to customize.
      */
     public static func initializeRestKit(withConfigurationClosure closure: KitConfigurationHandler) {
-        if !_initialized() {
+        if !_initialized {
             // Set the default settings for SnSRestKit behaviour
             var config = SnSRestKitConfiguration(baseApiUrl: nil,
                                                  loggingEnable: false,
@@ -81,10 +76,8 @@ final public class SnSRestKit {
             _coreManager = SnSRestKitManager(withConfiguration: _configuration)
             _coreManager?.launchKit()
             
-            _coreManager = nil
-            
         } else {
-            print("<SnSRestKit> Already initialized once.")
+            fatalError("<SnSRestKit> Already initialized once.")
         }
     }
     

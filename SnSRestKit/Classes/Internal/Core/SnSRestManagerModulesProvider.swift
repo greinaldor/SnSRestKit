@@ -24,7 +24,7 @@ extension SnSRestModulepInterface {
  */
 typealias SnSRestRequestRunner = SnSRestRequestRunning & SnSRestModuleProtocol
 protocol SnSRestRequestRunnerProvider {
-    var requestRunner : SnSRestRequestRunner? { get }
+    var requestRunner: SnSRestRequestRunner? { get }
 }
 
 protocol SnSRestSessionControllerProvider {

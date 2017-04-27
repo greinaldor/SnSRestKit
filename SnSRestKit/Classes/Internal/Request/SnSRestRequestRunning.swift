@@ -10,9 +10,9 @@ import Foundation
 import BoltsSwift
 
 enum SnSRestRequestRunningOptions {
-    case SnSRestRequestRunningOptionRetryIfFailed
+    case restRequestRunningOptionRetryIfFailed
 }
 
 protocol SnSRestRequestRunning {
-    func runRequestAsync(_ request: SnSRestRequest,_ withOptions: SnSRestRequestRunningOptions) -> Task<Any>
+    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> Task<Any>
 }

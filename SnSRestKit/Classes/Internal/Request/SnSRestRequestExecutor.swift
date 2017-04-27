@@ -20,6 +20,6 @@ final class SnSRestRequestExecutor: SnSRestModule, SnSRestRequestRunning {
     }
     
     func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> Task<Any> {
-        return Task.init(true);
+        return Task.init(true)
     }
 }

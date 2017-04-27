@@ -44,9 +44,9 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		69114187ED5B9375DC517E82 /* Pods_SnSRestKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnSRestKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7169841EF9CB30D91CAE0222 /* Pods-SnSRestKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnSRestKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnSRestKit_Tests/Pods-SnSRestKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		77CB8CEA6A20E25D6B6E09BD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		CCCB6A7B304C4344242C8425 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		CF065BEA033324F1667A039F /* SnSRestKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SnSRestKit.podspec; path = ../SnSRestKit.podspec; sourceTree = "<group>"; };
+		77CB8CEA6A20E25D6B6E09BD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		CCCB6A7B304C4344242C8425 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		CF065BEA033324F1667A039F /* SnSRestKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SnSRestKit.podspec; path = ../SnSRestKit.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
