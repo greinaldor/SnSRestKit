@@ -33,12 +33,20 @@ class SnSRestRequestController: SnSRestModule {
         controllerOperationsQueue = nil
     }
     
-    func runRequestAsync(request: SnSRestRequest) -> Task<Any> {
-        return self.taskFromModuleExecutor { () -> Any in
+    func runRequestAsync(request: SnSRestRequest) -> SnSRestTask {
+        
+        return self.taskFromModuleExecutor { () -> SnSRestTask in
             
-            SnSRestConsoleLogger.log("run request")
+            // Return cancelledTask if request has been cancelled before execution
+            if request.isCancelled {
+                return Task.cancelledTask()
+            }
             
-            return Task.init(true)
+            guard let requestExecutor = self.dataSource?.requestRunner else {
+                return Task.cancelledTask()
+            }
+            
+            return requestExecutor.runRequestAsync(request, .restRequestRunningOptionRetryIfFailed)
         }
     }
 }

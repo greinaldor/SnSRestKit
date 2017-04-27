@@ -51,8 +51,7 @@ class SnSRestModulepInterface<ModulesDataSourceT: AnyObject>: SnSRestModuleProto
 
 /// Module extended with Bolts features
 extension SnSRestModulepInterface {
-    func taskFromModuleExecutor(closure: @escaping ((Void) throws -> Any)) -> Task<Any> {
+    func taskFromModuleExecutor(closure: @escaping ((Void) throws -> AnyObject)) -> Task<AnyObject> {
         return Task.init(self.modulesAccessExecutor, closure: closure)
     }
-    
 }

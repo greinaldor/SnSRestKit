@@ -19,7 +19,7 @@ final class SnSRestRequestExecutor: SnSRestModule, SnSRestRequestRunning {
         SnSRestConsoleLogger.log("SnSRestRequestExecutor : Unloading Module...")
     }
     
-    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> Task<Any> {
-        return Task.init(true)
+    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> SnSRestTask {
+        return Task.init(SnSRestTaskResult())
     }
 }

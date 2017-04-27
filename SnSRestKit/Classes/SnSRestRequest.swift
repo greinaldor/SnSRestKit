@@ -8,6 +8,28 @@
 
 import Foundation
 
+fileprivate enum RequestState {
+    case pending
+    case running
+    case cancelled
+    case paused
+    case error
+}
+
 final public class SnSRestRequest {
     
+    fileprivate var state: RequestState = .pending
+
+    public func cancel() {
+        state = .cancelled
+    }
+    
+    var isCancelled: Bool {
+        switch state {
+        case .cancelled:
+            return true
+        default:
+            return false
+        }
+    }
 }

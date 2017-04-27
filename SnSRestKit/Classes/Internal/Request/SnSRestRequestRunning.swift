@@ -13,6 +13,13 @@ enum SnSRestRequestRunningOptions {
     case restRequestRunningOptionRetryIfFailed
 }
 
+class SnSRestTaskResult {
+    
+}
+
+typealias SnSRestTask = Task<AnyObject>
+
 protocol SnSRestRequestRunning {
-    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> Task<Any>
+    
+    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> SnSRestTask
 }

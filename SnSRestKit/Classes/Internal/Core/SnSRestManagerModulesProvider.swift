@@ -14,9 +14,14 @@ protocol SnSRestKitManagerModules :
     SnSRestSessionControllerProvider {}
 
 extension SnSRestModulepInterface {
-    public func dataSource() -> SnSRestKitManagerModules? {
+    
+    var dataSource: SnSRestKitManagerModules? {
         return modulesProvider as? SnSRestKitManagerModules
     }
+    
+//    public func dataSource() -> SnSRestKitManagerModules? {
+//        return modulesProvider as? SnSRestKitManagerModules
+//    }
 }
 
 typealias SnSRestRequestRunner = SnSRestRequestRunning & SnSRestModuleProtocol

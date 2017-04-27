@@ -21,12 +21,10 @@ internal class SnSRestCachedRequestController: SnSRestRequestController {
         SnSRestConsoleLogger.log("SnSRestCachedRequestController: Unloading Module...")
     }
     
-    override func runRequestAsync(request: SnSRestRequest) -> Task<Any> {
-        return self.taskFromModuleExecutor { () -> Any in
+    override func runRequestAsync(request: SnSRestRequest) -> SnSRestTask {
+        return self.taskFromModuleExecutor { () -> Task<AnyObject> in
             
-            SnSRestConsoleLogger.log("run request")
-            
-            return Task.init(true)
+            return self.runRequestAsync(request: request)
         }
     }
 }
