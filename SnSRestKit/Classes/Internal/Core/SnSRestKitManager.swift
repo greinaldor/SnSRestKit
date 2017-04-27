@@ -18,14 +18,19 @@ final class SnSRestKitManager : SnSRestKitManagerModules {
     
     fileprivate var _requestRunner: SnSRestRequestExecutor?
     
-    lazy var requestRunner: SnSRestRequestRunner? = { _ in
-        return self._requestRunnerAccessQueue.sync {
-            if (self._requestRunner == nil) {
-                self._requestRunner = SnSRestRequestExecutor(withModulesDataSource: self)
+    var requestRunner: SnSRestRequestRunner? {
+        get {
+            return self._requestRunnerAccessQueue.sync {
+                if (self._requestRunner == nil) {
+                    self._requestRunner = SnSRestRequestExecutor(withModulesDataSource: self)
+                }
+                return self._requestRunner
             }
-            return self._requestRunner
         }
-    }()
+        set {
+            return self._requestRunnerAccessQueue.sync { self._requestRunner = newValue as! SnSRestRequestExecutor? }
+        }
+    }
 
     var sessionController: Any?;
     
