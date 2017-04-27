@@ -20,7 +20,9 @@ final class SnSRestKitManager : SnSRestKitManagerModules {
     
     lazy var requestRunner: SnSRestRequestRunner? = { _ in
         return self._requestRunnerAccessQueue.sync {
-            self._requestRunner = SnSRestRequestExecutor(withModulesDataSource: self)
+            if (self._requestRunner == nil) {
+                self._requestRunner = SnSRestRequestExecutor(withModulesDataSource: self)
+            }
             return self._requestRunner
         }
     }()
@@ -39,6 +41,10 @@ final class SnSRestKitManager : SnSRestKitManagerModules {
         
         // Consume configuration
         _core = SnSRestKitCore(withModulesDataSource: self)
+        
+        requestRunner!.moduleName
+        
+        requestRunner!.moduleName
     }
     
     deinit {
