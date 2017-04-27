@@ -60,7 +60,6 @@
 		4FEB34672824B33CFA9182A31FFC1F46 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FB22CD46902984C784B1295332B3E0 /* FBSnapshotTestCase.framework */; };
 		5319A41B7EDFAA178E2D90F289C0A2F4 /* NimbleXCTestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25D83ABF152B4A01728E1D03EAFE67F /* NimbleXCTestHandler.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D19FBFD39C2C9458457B13E65DC69DA /* Request.swift */; };
-		541858D23639C7AC2088EF4DF8BBF080 /* SnSRestKitCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA1432607F20DA5CB37F0D0790E23B /* SnSRestKitCore.swift */; };
 		55589999B0DFD872C48BA614FF554EA0 /* TaskCompletionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C754EBCE695A74A30A7CBAE5A9A40933 /* TaskCompletionSource.swift */; };
 		5626C787FCA997909370F10607A8DAB3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC740F4CA4A75ABFC8F7452F0F66B30 /* Task.swift */; };
 		56D4A55B847C882A037A50BD6E8AB0C0 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F92E5562A2D1ED34709E3E9361D8B2 /* QuickConfiguration.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -376,7 +375,6 @@
 		6AA92C24B064CD369D9F03CF5C08DEA3 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		6F8E4612F30BEDBB01A2CEB05A529074 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Sources/Nimble/Utils/Async.swift; sourceTree = "<group>"; };
 		703A52881C76C881930C9551CD5BE49A /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
-		72DA1432607F20DA5CB37F0D0790E23B /* SnSRestKitCore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnSRestKitCore.swift; sourceTree = "<group>"; };
 		72F92E5562A2D1ED34709E3E9361D8B2 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
 		7445A59D31A8B91788F3594C7E35637E /* Pods-SnSRestKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnSRestKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7495FAAEA71AECE69BECB71A138E8CF7 /* PostNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostNotification.swift; path = Sources/Nimble/Matchers/PostNotification.swift; sourceTree = "<group>"; };
@@ -721,7 +719,6 @@
 		48D842672856A655A1A45985603C1D7A /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				72DA1432607F20DA5CB37F0D0790E23B /* SnSRestKitCore.swift */,
 				C269718CC48F6CDE800B67C3C1ED0C1E /* SnSRestKitManager.swift */,
 				BBDF6291F30AE8D04F23D9F595211684 /* SnSRestManagerModulesProvider.swift */,
 				A45588EF570B020E8711A8D636874E09 /* SnSRestModule.swift */,
@@ -1529,7 +1526,6 @@
 				EAC2B8BF73408719D57199AFBD1D6FAB /* SnSRestCLogger.swift in Sources */,
 				9299861960BA1D176297FBC257B7D177 /* SnSRestKit-dummy.m in Sources */,
 				E11BD63CF21FD54A8D1C7011355D616A /* SnSRestKit.swift in Sources */,
-				541858D23639C7AC2088EF4DF8BBF080 /* SnSRestKitCore.swift in Sources */,
 				C8D5AD1326888256EFFF110D9A44C314 /* SnSRestKitManager.swift in Sources */,
 				4E87BC804263FD8059553485BE14830B /* SnSRestManagerModulesProvider.swift in Sources */,
 				3769A15C8A064A6ADE42791377FFD550 /* SnSRestModule.swift in Sources */,

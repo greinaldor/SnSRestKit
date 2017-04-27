@@ -13,14 +13,16 @@ typealias SnSBoltTask = Task<Bool>
 
 final class SnSRestKitManager: SnSRestKitManagerModules {
     
-    fileprivate var _requestRunnerAccessQueue: DispatchQueue
-    fileprivate var _core: SnSRestKitCore?
+    fileprivate var requestRunnerAccessQueue: DispatchQueue
     
+    /// The internal module managing SSRestRequest execution
+    fileprivate var requestController: SnSRestRequestController?
+    
+    /// The internal modules visible accross modules
     fileprivate var _requestRunner: SnSRestRequestRunner?
-    
     var requestRunner: SnSRestRequestRunner? {
         get {
-            return self._requestRunnerAccessQueue.sync {
+            return self.requestRunnerAccessQueue.sync {
                 if self._requestRunner == nil {
                     self._requestRunner = SnSRestRequestExecutor(withModulesDataSource: self)
                 }
@@ -28,14 +30,14 @@ final class SnSRestKitManager: SnSRestKitManagerModules {
             }
         }
         set {
-            return self._requestRunnerAccessQueue.sync { self._requestRunner = newValue }
+            return self.requestRunnerAccessQueue.sync { self._requestRunner = newValue }
         }
     }
 
     var sessionController: Any?
     
     private init() {
-        _requestRunnerAccessQueue = DispatchQueue(label: "com.snsrest.coreManager.requestRunner.accessQueue")
+        requestRunnerAccessQueue = DispatchQueue(label: "com.snsrest.coreManager.requestRunner.accessQueue")
         
     }
     
@@ -44,13 +46,14 @@ final class SnSRestKitManager: SnSRestKitManagerModules {
         
         SnSRestConsoleLogger.log("SnSRestKitManager : Initializing")
         
-        // Consume configuration
-        _core = SnSRestKitCore(withModulesDataSource: self)
+        // Instantiate the desired request's controller depending on cahing preferences.        
+        requestController = (configuration.cacheEnable) ?
+            SnSRestCachedRequestController(withModulesDataSource: self) :
+            SnSRestRequestController(withModulesDataSource: self)
     }
     
     deinit {
         _requestRunner = nil
-        _core = nil
     }
     
     func launchKit() {
