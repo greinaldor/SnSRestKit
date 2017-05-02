@@ -40,8 +40,8 @@ final public class SnSRestKit {
         return (_coreManager != nil)
     }
     
-    public static var isCachingEnabled = { SnSRestKit._configuration.cacheEnable }
-    public static var isLoggingEnabled = { SnSRestKit._configuration.loggingEnable }
+    public static var isCachingEnabled: Bool { return SnSRestKit._configuration.cacheEnable }
+    public static var isLoggingEnabled: Bool { return SnSRestKit._configuration.loggingEnable }
     
     // MARK: Initializers
     

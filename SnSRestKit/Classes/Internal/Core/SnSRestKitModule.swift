@@ -22,15 +22,13 @@ protocol SnSRestModuleProtocol {
 
 class SnSRestModulepInterface<ModulesDataSource: AnyObject>: SnSRestModuleProtocol {
     
-    private(set) weak var modulesProvider: ModulesDataSource?
     public private(set) var moduleName: String
+    private(set) weak var modulesProvider: ModulesDataSource?
     private(set) var modulesAccessExecutor: Executor
-    private var moduleAccessQueue: DispatchQueue
+    var moduleAccessQueue: DispatchQueue
     
-    func loadModule() { fatalError("Should be overidden in subclass") }
-    func unloadModule() {
-        modulesProvider = nil
-    }
+    func loadModule() { fatalError("Should be overridden in subclass") }
+    func unloadModule() { fatalError("Should be overridden in subclass")    }
     
     init() {
         moduleName = "com.\(String(reflecting: type(of: self)).lowercased())"
@@ -39,7 +37,7 @@ class SnSRestModulepInterface<ModulesDataSource: AnyObject>: SnSRestModuleProtoc
         modulesAccessExecutor = Executor.queue(moduleAccessQueue)
     }
     
-    public convenience init(withModulesDataSource dataSource: ModulesDataSource) {
+    public convenience init(with dataSource: ModulesDataSource) {
         self.init()
         modulesProvider = dataSource
         loadModule()
@@ -47,12 +45,13 @@ class SnSRestModulepInterface<ModulesDataSource: AnyObject>: SnSRestModuleProtoc
 
     deinit {
         unloadModule()
+        modulesProvider = nil
     }
 }
 
 /// Module extended with Bolts features
 extension SnSRestModulepInterface {
-    func taskFromModuleExecutor(closure: @escaping ((Void) throws -> AnyObject)) -> Task<AnyObject> {
+    func taskFromModuleExecutor(closure: @escaping ((Void) throws -> SnSRestTask)) -> SnSRestTask {
         return Task.init(self.modulesAccessExecutor, closure: closure)
     }
 }

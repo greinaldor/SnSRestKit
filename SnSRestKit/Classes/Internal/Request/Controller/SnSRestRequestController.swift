@@ -9,7 +9,7 @@
 import Foundation
 import BoltsSwift
 
-class SnSRestRequestController: SnSRestModule {
+class SnSRestDefaultRequestController: SnSRestModule, SnSRestRequestRunning {
     
     fileprivate var controllerOperationsQueue: DispatchQueue?
     
@@ -33,7 +33,7 @@ class SnSRestRequestController: SnSRestModule {
         controllerOperationsQueue = nil
     }
     
-    func runRequestAsync(request: SnSRestRequest) -> SnSRestTask {
+    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> SnSRestTask {
         return self.taskFromModuleExecutor { () -> SnSRestTask in
             
             // Return cancelledTask if request has been cancelled before execution

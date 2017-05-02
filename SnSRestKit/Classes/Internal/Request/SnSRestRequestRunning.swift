@@ -17,7 +17,7 @@ class SnSRestTaskResult {
     
 }
 
-typealias SnSRestTask = Task<AnyObject>
+typealias SnSRestTask = Task<Any>
 
 protocol SnSRestRequestRunning {
     

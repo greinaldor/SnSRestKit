@@ -9,7 +9,7 @@
 import Foundation
 import BoltsSwift
 
-internal class SnSRestCachedRequestController: SnSRestRequestController {
+class SnSRestCachedRequestController: SnSRestDefaultRequestController {
     
     override func loadModule() {
         super.loadModule()
@@ -21,10 +21,10 @@ internal class SnSRestCachedRequestController: SnSRestRequestController {
         SnSRestConsoleLogger.log("SnSRestCachedRequestController: Unloading Module...")
     }
     
-    override func runRequestAsync(request: SnSRestRequest) -> SnSRestTask {
-        return self.taskFromModuleExecutor { () -> Task<AnyObject> in
+    override func runRequestAsync(_ request: SnSRestRequest, _ options: SnSRestRequestRunningOptions) -> SnSRestTask {
+        return self.taskFromModuleExecutor { () -> SnSRestTask in
             
-            return self.runRequestAsync(request: request)
+            return self.runRequestAsync(request, options)
         }
     }
 }

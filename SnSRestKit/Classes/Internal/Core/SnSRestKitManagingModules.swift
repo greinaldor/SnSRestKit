@@ -8,27 +8,28 @@
 
 import Foundation
 
-protocol SnSRestKitManagerModules :
+protocol SnSRestManagingModules :
     class,
     SnSRestRequestRunnerProvider,
+    SnSRestRequestControllerProvider,
     SnSRestSessionControllerProvider {}
-
-extension SnSRestModulepInterface {
-    
-    var dataSource: SnSRestKitManagerModules? {
-        return modulesProvider as? SnSRestKitManagerModules
-    }
-    
-//    public func dataSource() -> SnSRestKitManagerModules? {
-//        return modulesProvider as? SnSRestKitManagerModules
-//    }
-}
 
 typealias SnSRestRequestRunner = SnSRestRequestRunning & SnSRestModuleProtocol
 protocol SnSRestRequestRunnerProvider {
     var requestRunner: SnSRestRequestRunner? { get }
 }
 
+typealias SnSRestRequestController = SnSRestRequestRunning & SnSRestModuleProtocol
+protocol SnSRestRequestControllerProvider {
+    var requestController: SnSRestRequestController? { get }
+}
+
 protocol SnSRestSessionControllerProvider {
     var sessionController : Any? { get }
+}
+
+extension SnSRestModulepInterface {
+    var dataSource: SnSRestManagingModules? {
+        return modulesProvider as? SnSRestManagingModules
+    }
 }

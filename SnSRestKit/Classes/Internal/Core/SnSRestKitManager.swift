@@ -11,49 +11,58 @@ import BoltsSwift
 
 typealias SnSBoltTask = Task<Bool>
 
-final class SnSRestKitManager: SnSRestKitManagerModules {
+final class SnSRestKitManager: SnSRestManagingModules {
     
-    fileprivate var requestRunnerAccessQueue: DispatchQueue
+    fileprivate let requestRunnerAccessQueue = DispatchQueue(label:"com.snsrest.coreManager.requestRunner.accessQueue")
+    fileprivate let requestControllerAccessQueue = DispatchQueue(label:"com.snsrest.coreManager.requestController.accessQueue")
     
-    /// The internal module managing SSRestRequest execution
-    fileprivate var requestController: SnSRestRequestController?
+    //***************************************************
+    // The internal visible modules
+    //***************************************************
     
-    /// The internal modules visible accross modules
+    fileprivate var _requestController: SnSRestRequestController?
     fileprivate var _requestRunner: SnSRestRequestRunner?
-    var requestRunner: SnSRestRequestRunner? {
+
+    var requestController: SnSRestRequestController? {
+        get {
+            return self.requestControllerAccessQueue.sync {
+                if self._requestController == nil {
+                    self._requestController = SnSRestDefaultRequestController(with: self)
+                }
+                return self._requestController
+            }
+        }
+        set {
+            self.requestControllerAccessQueue.sync { self._requestController = newValue }
+        }
+    }
+    
+    public var requestRunner: SnSRestRequestRunner? {
         get {
             return self.requestRunnerAccessQueue.sync {
                 if self._requestRunner == nil {
-                    self._requestRunner = SnSRestRequestExecutor(withModulesDataSource: self)
+                    self._requestRunner = SnSRestRequestExecutor(with: self)
                 }
                 return self._requestRunner
             }
         }
         set {
-            return self.requestRunnerAccessQueue.sync { self._requestRunner = newValue }
+            self.requestRunnerAccessQueue.sync { self._requestRunner = newValue }
         }
     }
 
     var sessionController: Any?
     
-    private init() {
-        requestRunnerAccessQueue = DispatchQueue(label: "com.snsrest.coreManager.requestRunner.accessQueue")
-        
-    }
-    
-    public convenience init(withConfiguration configuration: SnSRestKitConfiguration) {
+    public convenience required init(withConfiguration configuration: SnSRestKitConfiguration) {
         self.init()
-        
         SnSRestConsoleLogger.log("SnSRestKitManager : Initializing")
         
         // Instantiate the desired request's controller depending on cahing preferences.        
-        requestController = (configuration.cacheEnable) ?
-            SnSRestCachedRequestController(withModulesDataSource: self) :
-            SnSRestRequestController(withModulesDataSource: self)
     }
     
     deinit {
         _requestRunner = nil
+        _requestController = nil
     }
     
     func launchKit() {

@@ -11,7 +11,7 @@ import Foundation
 class SnSRestConsoleLogger {
     
     public static func log(_ message: String) {
-        if SnSRestKit.isLoggingEnabled() {
+        if SnSRestKit.isLoggingEnabled {
             print(message)
         }
     }
