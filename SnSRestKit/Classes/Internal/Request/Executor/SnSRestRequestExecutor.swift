@@ -9,7 +9,7 @@
 import Foundation
 import BoltsSwift
 
-final class SnSRestRequestExecutor: SnSRestModule, SnSRestRequestRunning {
+final class SnSRestRequestExecutor: SnSRestModule {
     
     override func loadModule() {
         SnSRestConsoleLogger.log("SnSRestRequestExecutor : Loading Module...")
@@ -19,7 +19,12 @@ final class SnSRestRequestExecutor: SnSRestModule, SnSRestRequestRunning {
         SnSRestConsoleLogger.log("SnSRestRequestExecutor : Unloading Module...")
     }
     
+}
+
+extension SnSRestRequestExecutor : SnSRestRequestRunning {
+    
     func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> SnSRestTask {
         return Task.init(SnSRestTaskResult())
     }
+    
 }

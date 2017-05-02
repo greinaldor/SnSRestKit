@@ -14,14 +14,15 @@ typealias SnSRestModule = SnSRestModulepInterface<AnyObject>
 protocol SnSRestModuleProtocol {
     
     var moduleName: String { get }
+    var moduleAccessQueue: DispatchQueue { get }
 
     func loadModule()
     func unloadModule()
 }
 
-class SnSRestModulepInterface<ModulesDataSourceT: AnyObject>: SnSRestModuleProtocol {
+class SnSRestModulepInterface<ModulesDataSource: AnyObject>: SnSRestModuleProtocol {
     
-    private(set) weak var modulesProvider: ModulesDataSourceT?
+    private(set) weak var modulesProvider: ModulesDataSource?
     public private(set) var moduleName: String
     private(set) var modulesAccessExecutor: Executor
     private var moduleAccessQueue: DispatchQueue
@@ -38,7 +39,7 @@ class SnSRestModulepInterface<ModulesDataSourceT: AnyObject>: SnSRestModuleProto
         modulesAccessExecutor = Executor.queue(moduleAccessQueue)
     }
     
-    public convenience init(withModulesDataSource dataSource: ModulesDataSourceT) {
+    public convenience init(withModulesDataSource dataSource: ModulesDataSource) {
         self.init()
         modulesProvider = dataSource
         loadModule()

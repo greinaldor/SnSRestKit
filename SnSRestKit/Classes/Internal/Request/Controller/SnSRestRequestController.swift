@@ -34,7 +34,6 @@ class SnSRestRequestController: SnSRestModule {
     }
     
     func runRequestAsync(request: SnSRestRequest) -> SnSRestTask {
-        
         return self.taskFromModuleExecutor { () -> SnSRestTask in
             
             // Return cancelledTask if request has been cancelled before execution
