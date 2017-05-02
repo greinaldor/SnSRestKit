@@ -27,6 +27,7 @@
 		1F6E5726AC75236CEB444CD10B8BD804 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE74257D2669E46A16F9016F865CCFCF /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		20145736C2895CD44288DD6DA0F69ADF /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C237689E8109A6A42616F69748965C4 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		20C52E9988E8C41279CE2AE5CB8815CC /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA73F9F5ACDADCA00E79522C1025E4B /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		20DF449F1EB9106E001BC589 /* SnSRestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF449E1EB9106E001BC589 /* SnSRestServer.swift */; };
 		2615AB398D7332E091DAB27E1DCB962A /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24829F9DEA6A28AFA6E88002207E457B /* BeGreaterThanOrEqualTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		27B262F95D3CF9E3C74541A41929691C /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5D0E4FA4E6D8180BA517561572C805 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		280B6793D5B1DC9E824E363BB8682E64 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5AB26449AA9D43C529E93F1C7F133E /* NSBundle+CurrentTestBundle.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -86,7 +87,6 @@
 		79DF887499296744341DDFFCEFD3A71C /* SnSRestRequestRunning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C89DA0EF7932CA84AB7CA441A3E5F /* SnSRestRequestRunning.swift */; };
 		7A38FF30472B04B0CFBBA7675A121A46 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA096B153146152775DA41F3D721218 /* XCTest.framework */; };
 		7AA53A44D99EB2D5A4540822EFA512AA /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2878416D943946B1824014FC4BDF2D /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		7AD9746D1EB242B200E36161 /* SnSRestRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9746C1EB242B200E36161 /* SnSRestRequestResponse.swift */; };
 		7AD974731EB254D100E36161 /* SnSRestCachedRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9746F1EB254D100E36161 /* SnSRestCachedRequestController.swift */; };
 		7AD974741EB254D100E36161 /* SnSRestRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD974701EB254D100E36161 /* SnSRestRequestController.swift */; };
 		7AD974751EB254D100E36161 /* SnSRestRequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD974721EB254D100E36161 /* SnSRestRequestExecutor.swift */; };
@@ -310,6 +310,7 @@
 		1CF46603662F8370F3A33D8E31DCA844 /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		1EE168966D174DD84F5F482D769B03CF /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		208EA2B71373C3F3224105A5A0DEAD95 /* Pods-SnSRestKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SnSRestKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		20DF449E1EB9106E001BC589 /* SnSRestServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestServer.swift; sourceTree = "<group>"; };
 		21EB0DE0D8B74CAEECB86E3FC69F7929 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		23475799914A238343A88D85D0D733C8 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		2384F16B72B5CA19F34CEBC7F5A32BB4 /* Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Closures.swift; path = Sources/Quick/Hooks/Closures.swift; sourceTree = "<group>"; };
@@ -391,7 +392,6 @@
 		78EC09DED79BC6D848C96B01A3257958 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		792775D0EB139ED4579899B8B4D3045D /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		7A05E203BE7A6565E93A0EFDCAE928AE /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
-		7AD9746C1EB242B200E36161 /* SnSRestRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestResponse.swift; sourceTree = "<group>"; };
 		7AD9746F1EB254D100E36161 /* SnSRestCachedRequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestCachedRequestController.swift; sourceTree = "<group>"; };
 		7AD974701EB254D100E36161 /* SnSRestRequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestController.swift; sourceTree = "<group>"; };
 		7AD974721EB254D100E36161 /* SnSRestRequestExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestExecutor.swift; sourceTree = "<group>"; };
@@ -608,6 +608,7 @@
 				48D842672856A655A1A45985603C1D7A /* Core */,
 				7CFB642C4521A6637B697EFB79414DA5 /* Logging */,
 				EEDC0131DFA0F4F94E8441239C5DC957 /* Request */,
+				20DF449D1EB90F4C001BC589 /* Network */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -670,6 +671,21 @@
 				77BDC06FD9E62DAEEB1E44524C97F20E /* PrettySyntax.swift */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		20DF449D1EB90F4C001BC589 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				20DF449E1EB9106E001BC589 /* SnSRestServer.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		20DF44A01EB91091001BC589 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		25AB38C0F7EBF1C7DB844FCA109107A3 /* Frameworks */ = {
@@ -1007,7 +1023,6 @@
 			children = (
 				5702AD9A22C5A9636F8754EA8DBE7BE5 /* SnSRestKit.swift */,
 				E8B734165DD2E5179CD1C55C543637CC /* SnSRestRequest.swift */,
-				7AD9746C1EB242B200E36161 /* SnSRestRequestResponse.swift */,
 				0CAC681C5305EEB26B85970C0CBE2E8D /* Internal */,
 			);
 			path = Classes;
@@ -1048,6 +1063,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7C89DA0EF7932CA84AB7CA441A3E5F /* SnSRestRequestRunning.swift */,
+				20DF44A01EB91091001BC589 /* Response */,
 				7AD9746E1EB254D100E36161 /* Controller */,
 				7AD974711EB254D100E36161 /* Executor */,
 			);
@@ -1543,10 +1559,10 @@
 			files = (
 				7AD974731EB254D100E36161 /* SnSRestCachedRequestController.swift in Sources */,
 				7AD974751EB254D100E36161 /* SnSRestRequestExecutor.swift in Sources */,
-				7AD9746D1EB242B200E36161 /* SnSRestRequestResponse.swift in Sources */,
 				EAC2B8BF73408719D57199AFBD1D6FAB /* SnSRestCLogger.swift in Sources */,
 				9299861960BA1D176297FBC257B7D177 /* SnSRestKit-dummy.m in Sources */,
 				E11BD63CF21FD54A8D1C7011355D616A /* SnSRestKit.swift in Sources */,
+				20DF449F1EB9106E001BC589 /* SnSRestServer.swift in Sources */,
 				C8D5AD1326888256EFFF110D9A44C314 /* SnSRestKitManager.swift in Sources */,
 				7AD974741EB254D100E36161 /* SnSRestRequestController.swift in Sources */,
 				4E87BC804263FD8059553485BE14830B /* SnSRestKitManagingModules.swift in Sources */,

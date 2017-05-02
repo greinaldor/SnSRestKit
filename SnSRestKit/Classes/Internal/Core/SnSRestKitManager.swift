@@ -15,6 +15,7 @@ final class SnSRestKitManager: SnSRestManagingModules {
     
     fileprivate let requestRunnerAccessQueue = DispatchQueue(label:"com.snsrest.coreManager.requestRunner.accessQueue")
     fileprivate let requestControllerAccessQueue = DispatchQueue(label:"com.snsrest.coreManager.requestController.accessQueue")
+    fileprivate let requestServerAccessQueue = DispatchQueue(label:"com.snsrest.coreManager.requestServer.accessQueue")
     
     //***************************************************
     // The internal visible modules
@@ -22,8 +23,9 @@ final class SnSRestKitManager: SnSRestManagingModules {
     
     fileprivate var _requestController: SnSRestRequestController?
     fileprivate var _requestRunner: SnSRestRequestRunner?
+    fileprivate var _requestServer: SnSRestRequestServer?
 
-    var requestController: SnSRestRequestController? {
+    public var requestController: SnSRestRequestController? {
         get {
             return self.requestControllerAccessQueue.sync {
                 if self._requestController == nil {
@@ -50,6 +52,20 @@ final class SnSRestKitManager: SnSRestManagingModules {
             self.requestRunnerAccessQueue.sync { self._requestRunner = newValue }
         }
     }
+    
+    public var requestServer: SnSRestRequestServer? {
+        get {
+            return self.requestServerAccessQueue.sync {
+                if self._requestServer == nil {
+                    self._requestServer = SnSRestServer(with: self)
+                }
+                return self._requestServer
+            }
+        }
+        set {
+            self.requestServerAccessQueue.sync { self._requestServer = newValue }
+        }
+    }
 
     var sessionController: Any?
     
@@ -68,5 +84,8 @@ final class SnSRestKitManager: SnSRestManagingModules {
     func launchKit() {
         SnSRestConsoleLogger.log("SnSRestKitManager : Launching")
         
+        _ = self.requestController
+        _ = self.requestRunner
+        _ = self.requestServer
     }
 }

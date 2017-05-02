@@ -10,18 +10,24 @@ import Foundation
 
 protocol SnSRestManagingModules :
     class,
-    SnSRestRequestRunnerProvider,
-    SnSRestRequestControllerProvider,
+    SnSRestRequestRunnerProviding,
+    SnSRestRequestControllerProviding,
+    SnSRestRequestServerProviding,
     SnSRestSessionControllerProvider {}
 
 typealias SnSRestRequestRunner = SnSRestRequestRunning & SnSRestModuleProtocol
-protocol SnSRestRequestRunnerProvider {
+protocol SnSRestRequestRunnerProviding {
     var requestRunner: SnSRestRequestRunner? { get }
 }
 
 typealias SnSRestRequestController = SnSRestRequestRunning & SnSRestModuleProtocol
-protocol SnSRestRequestControllerProvider {
+protocol SnSRestRequestControllerProviding {
     var requestController: SnSRestRequestController? { get }
+}
+
+typealias SnSRestRequestServer = SnSRestRequestServing & SnSRestModuleProtocol
+protocol SnSRestRequestServerProviding {
+    var requestServer: SnSRestRequestServer? { get }
 }
 
 protocol SnSRestSessionControllerProvider {
