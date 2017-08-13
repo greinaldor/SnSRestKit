@@ -23,8 +23,17 @@ final class SnSRestRequestExecutor: SnSRestModule {
 
 extension SnSRestRequestExecutor : SnSRestRequestRunning {
     
-    func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> SnSRestTask {
-        return Task.init(SnSRestTaskResult())
+    func runRequestAsync(_ request: SnSRestRequest, _ options: SnSRestRequestRunningOptions) -> SnSRestTask {
+        return self.taskFromModuleExecutor { () -> SnSRestTask in
+            // Return cancelledTask if request has been cancelled before execution
+            if request.isCancelled {
+                return Task.cancelledTask()
+            }
+                        
+            guard let server = self.dataSource?.requestServer else {
+                return Task.cancelledTask()
+            }
+            return server.runRequestAsync(request, options)
+        }
     }
-    
 }

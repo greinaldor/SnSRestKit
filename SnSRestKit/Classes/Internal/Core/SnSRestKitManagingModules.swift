@@ -13,25 +13,32 @@ protocol SnSRestManagingModules :
     SnSRestRequestRunnerProviding,
     SnSRestRequestControllerProviding,
     SnSRestRequestServerProviding,
-    SnSRestSessionControllerProvider {}
+    SnSRestRequestResponseSerializerProviding,
+    SnSRestRequestDataSerializerProviding {}
 
-typealias SnSRestRequestRunner = SnSRestRequestRunning & SnSRestModuleProtocol
-protocol SnSRestRequestRunnerProviding {
+internal typealias SnSRestRequestRunner = SnSRestRequestRunning & SnSRestModuleProtocol
+internal protocol SnSRestRequestRunnerProviding {
     var requestRunner: SnSRestRequestRunner? { get }
 }
 
-typealias SnSRestRequestController = SnSRestRequestRunning & SnSRestModuleProtocol
-protocol SnSRestRequestControllerProviding {
+internal typealias SnSRestRequestController = SnSRestRequestRunning & SnSRestModuleProtocol
+internal protocol SnSRestRequestControllerProviding {
     var requestController: SnSRestRequestController? { get }
 }
 
-typealias SnSRestRequestServer = SnSRestRequestServing & SnSRestModuleProtocol
-protocol SnSRestRequestServerProviding {
+internal typealias SnSRestRequestServer = SnSRestRequestRunning & SnSRestRequestServing & SnSRestModuleProtocol
+internal protocol SnSRestRequestServerProviding {
     var requestServer: SnSRestRequestServer? { get }
 }
 
-protocol SnSRestSessionControllerProvider {
-    var sessionController : Any? { get }
+public typealias SnSRestRequestResponseSerializer = SnSRestRequestResponseSerializable & SnSRestModuleProtocol
+internal protocol SnSRestRequestResponseSerializerProviding {
+    var requestResponseSerializer: SnSRestRequestResponseSerializer? { get set }
+}
+
+public typealias SnSRestRequestDataSerializer = SnSRestRequestDataSerializable & SnSRestModuleProtocol
+internal protocol SnSRestRequestDataSerializerProviding {
+    var requestDataSerializer: SnSRestRequestDataSerializer? { get set }
 }
 
 extension SnSRestModulepInterface {

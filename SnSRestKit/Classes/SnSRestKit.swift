@@ -81,4 +81,12 @@ final public class SnSRestKit {
         }
     }
     
+    public static func setRequestDataSerializer(serializer: SnSRestRequestDataSerializer) {
+        self._coreManager?.requestDataSerializer = serializer
+    }
+    
+    public static func setRequestResponseSerializer(serializer: SnSRestRequestResponseSerializer) {
+        self._coreManager?.requestResponseSerializer = serializer
+    }
+    
 }

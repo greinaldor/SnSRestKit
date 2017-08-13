@@ -20,6 +20,8 @@ final public class SnSRestRequest {
     
     fileprivate var state: RequestState = .pending
 
+    public private(set) var title: String?    
+    
     public func cancel() {
         state = .cancelled
     }

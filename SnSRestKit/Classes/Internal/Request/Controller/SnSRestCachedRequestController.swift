@@ -24,7 +24,7 @@ class SnSRestCachedRequestController: SnSRestDefaultRequestController {
     override func runRequestAsync(_ request: SnSRestRequest, _ options: SnSRestRequestRunningOptions) -> SnSRestTask {
         return self.taskFromModuleExecutor { () -> SnSRestTask in
             
-            return self.runRequestAsync(request, options)
+            return super.runRequestAsync(request, options)
         }
     }
 }

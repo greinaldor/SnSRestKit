@@ -9,26 +9,23 @@
 import Foundation
 import BoltsSwift
 
-typealias SnSRestModule = SnSRestModulepInterface<AnyObject>
+public typealias SnSRestModule = SnSRestModulepInterface<AnyObject>
 
-protocol SnSRestModuleProtocol {
+public protocol SnSRestModuleProtocol {
     
     var moduleName: String { get }
     var moduleAccessQueue: DispatchQueue { get }
-
-    func loadModule()
-    func unloadModule()
 }
 
-class SnSRestModulepInterface<ModulesDataSource: AnyObject>: SnSRestModuleProtocol {
+open class SnSRestModulepInterface<ModulesDataSource: AnyObject>: SnSRestModuleProtocol {
     
     public private(set) var moduleName: String
     private(set) weak var modulesProvider: ModulesDataSource?
     private(set) var modulesAccessExecutor: Executor
-    var moduleAccessQueue: DispatchQueue
+    public var moduleAccessQueue: DispatchQueue
     
-    func loadModule() { fatalError("Should be overridden in subclass") }
-    func unloadModule() { fatalError("Should be overridden in subclass")    }
+    internal func loadModule() { fatalError("Should be overridden in subclass") }
+    internal func unloadModule() { fatalError("Should be overridden in subclass")    }
     
     init() {
         moduleName = "com.\(String(reflecting: type(of: self)).lowercased())"
@@ -52,6 +49,6 @@ class SnSRestModulepInterface<ModulesDataSource: AnyObject>: SnSRestModuleProtoc
 /// Module extended with Bolts features
 extension SnSRestModulepInterface {
     func taskFromModuleExecutor(closure: @escaping ((Void) throws -> SnSRestTask)) -> SnSRestTask {
-        return Task.init(self.modulesAccessExecutor, closure: closure)
+        return Task.executeWithTask(self.modulesAccessExecutor, closure: closure)
     }
 }

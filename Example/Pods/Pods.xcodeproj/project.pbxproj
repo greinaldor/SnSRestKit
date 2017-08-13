@@ -26,8 +26,16 @@
 		1D41C82DF471864DF66FE0D556D873E1 /* SnSRestKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A66B2C95E1E190E34605A39444C4354 /* SnSRestKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F6E5726AC75236CEB444CD10B8BD804 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE74257D2669E46A16F9016F865CCFCF /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		20145736C2895CD44288DD6DA0F69ADF /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C237689E8109A6A42616F69748965C4 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2046948E1F3E103E00A51408 /* SnSRestRequestResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046948D1F3E103E00A51408 /* SnSRestRequestResponseSerializable.swift */; };
+		204694901F3E10F900A51408 /* SnSRestRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046948F1F3E10F900A51408 /* SnSRestRequestResponse.swift */; };
+		204694921F3E131600A51408 /* SnSRestRequestJsonResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204694911F3E131600A51408 /* SnSRestRequestJsonResponseSerializer.swift */; };
+		204694961F3E1D0100A51408 /* SnSRestRequestDataSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204694951F3E1D0100A51408 /* SnSRestRequestDataSerializable.swift */; };
+		204694981F3E1DF900A51408 /* SnSRestRequestDataJsonSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204694971F3E1DF900A51408 /* SnSRestRequestDataJsonSerializer.swift */; };
+		2046949B1F3E33A900A51408 /* SnSRestConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046949A1F3E33A900A51408 /* SnSRestConcurrentOperation.swift */; };
+		2046949D1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046949C1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift */; };
 		20C52E9988E8C41279CE2AE5CB8815CC /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA73F9F5ACDADCA00E79522C1025E4B /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		20DF449F1EB9106E001BC589 /* SnSRestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF449E1EB9106E001BC589 /* SnSRestServer.swift */; };
+		20DF44A21EB9366A001BC589 /* SnSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF44A11EB9366A001BC589 /* SnSError.swift */; };
 		2615AB398D7332E091DAB27E1DCB962A /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24829F9DEA6A28AFA6E88002207E457B /* BeGreaterThanOrEqualTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		27B262F95D3CF9E3C74541A41929691C /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5D0E4FA4E6D8180BA517561572C805 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		280B6793D5B1DC9E824E363BB8682E64 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5AB26449AA9D43C529E93F1C7F133E /* NSBundle+CurrentTestBundle.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -309,8 +317,16 @@
 		1CBEF54032CA2BC06290BE76E45DD7EF /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
 		1CF46603662F8370F3A33D8E31DCA844 /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
 		1EE168966D174DD84F5F482D769B03CF /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
+		2046948D1F3E103E00A51408 /* SnSRestRequestResponseSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestResponseSerializable.swift; sourceTree = "<group>"; };
+		2046948F1F3E10F900A51408 /* SnSRestRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestResponse.swift; sourceTree = "<group>"; };
+		204694911F3E131600A51408 /* SnSRestRequestJsonResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestJsonResponseSerializer.swift; sourceTree = "<group>"; };
+		204694951F3E1D0100A51408 /* SnSRestRequestDataSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestDataSerializable.swift; sourceTree = "<group>"; };
+		204694971F3E1DF900A51408 /* SnSRestRequestDataJsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestRequestDataJsonSerializer.swift; sourceTree = "<group>"; };
+		2046949A1F3E33A900A51408 /* SnSRestConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestConcurrentOperation.swift; sourceTree = "<group>"; };
+		2046949C1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSHTTPSessionOperation.swift; sourceTree = "<group>"; };
 		208EA2B71373C3F3224105A5A0DEAD95 /* Pods-SnSRestKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SnSRestKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		20DF449E1EB9106E001BC589 /* SnSRestServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestServer.swift; sourceTree = "<group>"; };
+		20DF44A11EB9366A001BC589 /* SnSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSError.swift; sourceTree = "<group>"; };
 		21EB0DE0D8B74CAEECB86E3FC69F7929 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		23475799914A238343A88D85D0D733C8 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		2384F16B72B5CA19F34CEBC7F5A32BB4 /* Closures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Closures.swift; path = Sources/Quick/Hooks/Closures.swift; sourceTree = "<group>"; };
@@ -609,6 +625,7 @@
 				7CFB642C4521A6637B697EFB79414DA5 /* Logging */,
 				EEDC0131DFA0F4F94E8441239C5DC957 /* Request */,
 				20DF449D1EB90F4C001BC589 /* Network */,
+				20DF44A11EB9366A001BC589 /* SnSError.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -673,10 +690,29 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		204694941F3E1CCF00A51408 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				204694951F3E1D0100A51408 /* SnSRestRequestDataSerializable.swift */,
+				204694971F3E1DF900A51408 /* SnSRestRequestDataJsonSerializer.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		204694991F3E336400A51408 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				2046949A1F3E33A900A51408 /* SnSRestConcurrentOperation.swift */,
+				2046949C1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
 		20DF449D1EB90F4C001BC589 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				20DF449E1EB9106E001BC589 /* SnSRestServer.swift */,
+				204694991F3E336400A51408 /* Operation */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -684,6 +720,8 @@
 		20DF44A01EB91091001BC589 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				2046948D1F3E103E00A51408 /* SnSRestRequestResponseSerializable.swift */,
+				204694911F3E131600A51408 /* SnSRestRequestJsonResponseSerializer.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1023,6 +1061,7 @@
 			children = (
 				5702AD9A22C5A9636F8754EA8DBE7BE5 /* SnSRestKit.swift */,
 				E8B734165DD2E5179CD1C55C543637CC /* SnSRestRequest.swift */,
+				2046948F1F3E10F900A51408 /* SnSRestRequestResponse.swift */,
 				0CAC681C5305EEB26B85970C0CBE2E8D /* Internal */,
 			);
 			path = Classes;
@@ -1063,6 +1102,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7C89DA0EF7932CA84AB7CA441A3E5F /* SnSRestRequestRunning.swift */,
+				204694941F3E1CCF00A51408 /* Data */,
 				20DF44A01EB91091001BC589 /* Response */,
 				7AD9746E1EB254D100E36161 /* Controller */,
 				7AD974711EB254D100E36161 /* Executor */,
@@ -1558,15 +1598,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AD974731EB254D100E36161 /* SnSRestCachedRequestController.swift in Sources */,
+				204694921F3E131600A51408 /* SnSRestRequestJsonResponseSerializer.swift in Sources */,
+				204694981F3E1DF900A51408 /* SnSRestRequestDataJsonSerializer.swift in Sources */,
+				2046949B1F3E33A900A51408 /* SnSRestConcurrentOperation.swift in Sources */,
 				7AD974751EB254D100E36161 /* SnSRestRequestExecutor.swift in Sources */,
 				EAC2B8BF73408719D57199AFBD1D6FAB /* SnSRestCLogger.swift in Sources */,
+				204694961F3E1D0100A51408 /* SnSRestRequestDataSerializable.swift in Sources */,
 				9299861960BA1D176297FBC257B7D177 /* SnSRestKit-dummy.m in Sources */,
+				20DF44A21EB9366A001BC589 /* SnSError.swift in Sources */,
 				E11BD63CF21FD54A8D1C7011355D616A /* SnSRestKit.swift in Sources */,
 				20DF449F1EB9106E001BC589 /* SnSRestServer.swift in Sources */,
 				C8D5AD1326888256EFFF110D9A44C314 /* SnSRestKitManager.swift in Sources */,
 				7AD974741EB254D100E36161 /* SnSRestRequestController.swift in Sources */,
+				2046948E1F3E103E00A51408 /* SnSRestRequestResponseSerializable.swift in Sources */,
+				204694901F3E10F900A51408 /* SnSRestRequestResponse.swift in Sources */,
 				4E87BC804263FD8059553485BE14830B /* SnSRestKitManagingModules.swift in Sources */,
 				3769A15C8A064A6ADE42791377FFD550 /* SnSRestKitModule.swift in Sources */,
+				2046949D1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift in Sources */,
 				9135B414CCD0E5C6F883BD32659BD144 /* SnSRestRequest.swift in Sources */,
 				79DF887499296744341DDFFCEFD3A71C /* SnSRestRequestRunning.swift in Sources */,
 			);
