@@ -12,7 +12,7 @@ protocol SnSRestManagingModules :
     class,
     SnSRestRequestRunnerProviding,
     SnSRestRequestControllerProviding,
-    SnSRestRequestServerProviding,
+    SnSRestRequestSessionManagerProviding,
     SnSRestRequestResponseSerializerProviding,
     SnSRestRequestDataSerializerProviding {}
 
@@ -26,9 +26,9 @@ internal protocol SnSRestRequestControllerProviding {
     var requestController: SnSRestRequestController? { get }
 }
 
-internal typealias SnSRestRequestServer = SnSRestRequestRunning & SnSRestRequestServing & SnSRestModuleProtocol
-internal protocol SnSRestRequestServerProviding {
-    var requestServer: SnSRestRequestServer? { get }
+public typealias SnSRestRequestSessionManager = SnSRestRequestRunning & SnSRestRequestServing & SnSRestModuleProtocol
+internal protocol SnSRestRequestSessionManagerProviding {
+    var requestSessionManager: SnSRestRequestSessionManager? { get set }
 }
 
 public typealias SnSRestRequestResponseSerializer = SnSRestRequestResponseSerializable & SnSRestModuleProtocol

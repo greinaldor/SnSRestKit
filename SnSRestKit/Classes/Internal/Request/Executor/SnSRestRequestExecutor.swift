@@ -30,10 +30,10 @@ extension SnSRestRequestExecutor : SnSRestRequestRunning {
                 return Task.cancelledTask()
             }
                         
-            guard let server = self.dataSource?.requestServer else {
+            guard let sessionManager = self.dataSource?.requestSessionManager else {
                 return Task.cancelledTask()
             }
-            return server.runRequestAsync(request, options)
+            return sessionManager.runRequestAsync(request, options)
         }
     }
 }

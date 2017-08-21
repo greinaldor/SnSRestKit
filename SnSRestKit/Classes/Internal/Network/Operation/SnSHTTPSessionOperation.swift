@@ -9,8 +9,8 @@
 import Foundation
 import Alamofire
 
-typealias HTTPSessionOperationSuccessClosure = (URLRequest?, Data?) -> Void
-typealias HTTPSessionOperationFailureClosure = (URLRequest?, Error) -> Void
+typealias HTTPSessionOperationSuccessClosure = (DataResponse<Data>?, Data?) -> Void
+typealias HTTPSessionOperationFailureClosure = (DataResponse<Data>?, Error) -> Void
 
 internal class SnSHTTPSessionOperation: SnSRestConcurrentOperation {
     
@@ -19,7 +19,7 @@ internal class SnSHTTPSessionOperation: SnSRestConcurrentOperation {
     internal var url: String
     internal var encoding: URLEncoding = .default
     internal var parameters: Parameters?
-    internal var headers: [String: String]?
+    internal var headers: HTTPHeaders?
     internal var successClosure: HTTPSessionOperationSuccessClosure?
     internal var failureClosure: HTTPSessionOperationFailureClosure?
     
@@ -29,8 +29,8 @@ internal class SnSHTTPSessionOperation: SnSRestConcurrentOperation {
                                 httpMethod: HTTPMethod,
                                 urlString: String,
                                 encoding: URLEncoding = .default,
-                                parameters: Parameters,
-                                heaeders: [String: String]? = nil,
+                                parameters: Parameters?,
+                                heaeders: HTTPHeaders? = nil,
                                 successClosure: HTTPSessionOperationSuccessClosure? = nil,
                                 failureClosure: HTTPSessionOperationFailureClosure? = nil) -> SnSRestConcurrentOperation {
         let sessionOperation = SnSHTTPSessionOperation(url: urlString,
@@ -59,9 +59,9 @@ internal class SnSHTTPSessionOperation: SnSRestConcurrentOperation {
                                                   headers: self.headers)
         request.responseData { [weak self] (response) in
             if let error = response.error, let failingClosure = self?.failureClosure {
-                failingClosure(response.request, error)
+                failingClosure(response, error)
             } else if let successClosure = self?.successClosure {
-                successClosure(response.request, response.data)
+                successClosure(response, response.data)
             }
             self?.completeOperation()
         }

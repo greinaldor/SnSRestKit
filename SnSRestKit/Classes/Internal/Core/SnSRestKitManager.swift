@@ -36,9 +36,8 @@ final class SnSRestKitManager: SnSRestManagingModules {
         
         _ = self.requestController
         _ = self.requestRunner
-        _ = self.requestServer
+        _ = self.requestSessionManager
         _ = self.requestResponseSerializer
-        _ = self.requestController?.runRequestAsync(SnSRestRequest(), .restRequestRunningOptionRetryIfFailed)
     }
     
     //***************************************************
@@ -78,18 +77,18 @@ final class SnSRestKitManager: SnSRestManagingModules {
     }
     
     // MARK: - Request Server
-    private var _requestServer: SnSRestRequestServer?
-    public var requestServer: SnSRestRequestServer? {
+    private var _requestSessionManager: SnSRestRequestSessionManager?
+    public var requestSessionManager: SnSRestRequestSessionManager? {
         get {
             return self.requestServerAccessQueue.sync {
-                if self._requestServer == nil {
-                    self._requestServer = SnSRestServer(with: self)
+                if self._requestSessionManager == nil {
+                    self._requestSessionManager = SnSRestHTTPSessionManager(with: self)
                 }
-                return self._requestServer
+                return self._requestSessionManager
             }
         }
         set {
-            self.requestServerAccessQueue.sync { self._requestServer = newValue }
+            self.requestServerAccessQueue.sync { self._requestSessionManager = newValue }
         }
     }
     

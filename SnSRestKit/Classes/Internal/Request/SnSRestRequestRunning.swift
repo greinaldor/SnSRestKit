@@ -9,17 +9,21 @@
 import Foundation
 import BoltsSwift
 
-enum SnSRestRequestRunningOptions {
+public enum SnSRestRequestRunningOptions {
     case restRequestRunningOptionRetryIfFailed
 }
 
-class SnSRestTaskResult {
+public struct SnSRestTaskResult {
+    private(set) var result: Any?
+    private(set) var error: Error?
     
+    public func hasFaulted() -> Bool { return self.error != nil }
+    public func hasSucceeded() -> Bool { return self.result != nil }
 }
 
-typealias SnSRestTask = Task<SnSRestTaskResult>
+public typealias SnSRestTask = Task<SnSRestTaskResult>
 
-protocol SnSRestRequestRunning {
+public protocol SnSRestRequestRunning {
     
     func runRequestAsync(_ request: SnSRestRequest, _ withOptions: SnSRestRequestRunningOptions) -> SnSRestTask
 }

@@ -34,7 +34,7 @@
 		2046949B1F3E33A900A51408 /* SnSRestConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046949A1F3E33A900A51408 /* SnSRestConcurrentOperation.swift */; };
 		2046949D1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046949C1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift */; };
 		20C52E9988E8C41279CE2AE5CB8815CC /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA73F9F5ACDADCA00E79522C1025E4B /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		20DF449F1EB9106E001BC589 /* SnSRestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF449E1EB9106E001BC589 /* SnSRestServer.swift */; };
+		20DF449F1EB9106E001BC589 /* SnSRestHTTPSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF449E1EB9106E001BC589 /* SnSRestHTTPSessionManager.swift */; };
 		20DF44A21EB9366A001BC589 /* SnSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF44A11EB9366A001BC589 /* SnSError.swift */; };
 		2615AB398D7332E091DAB27E1DCB962A /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24829F9DEA6A28AFA6E88002207E457B /* BeGreaterThanOrEqualTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		27B262F95D3CF9E3C74541A41929691C /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5D0E4FA4E6D8180BA517561572C805 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -325,7 +325,7 @@
 		2046949A1F3E33A900A51408 /* SnSRestConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestConcurrentOperation.swift; sourceTree = "<group>"; };
 		2046949C1F3F4FB500A51408 /* SnSHTTPSessionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSHTTPSessionOperation.swift; sourceTree = "<group>"; };
 		208EA2B71373C3F3224105A5A0DEAD95 /* Pods-SnSRestKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SnSRestKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		20DF449E1EB9106E001BC589 /* SnSRestServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestServer.swift; sourceTree = "<group>"; };
+		20DF449E1EB9106E001BC589 /* SnSRestHTTPSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSRestHTTPSessionManager.swift; sourceTree = "<group>"; };
 		20DF44A11EB9366A001BC589 /* SnSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnSError.swift; sourceTree = "<group>"; };
 		21EB0DE0D8B74CAEECB86E3FC69F7929 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		23475799914A238343A88D85D0D733C8 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
@@ -711,7 +711,7 @@
 		20DF449D1EB90F4C001BC589 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				20DF449E1EB9106E001BC589 /* SnSRestServer.swift */,
+				20DF449E1EB9106E001BC589 /* SnSRestHTTPSessionManager.swift */,
 				204694991F3E336400A51408 /* Operation */,
 			);
 			path = Network;
@@ -1607,7 +1607,7 @@
 				9299861960BA1D176297FBC257B7D177 /* SnSRestKit-dummy.m in Sources */,
 				20DF44A21EB9366A001BC589 /* SnSError.swift in Sources */,
 				E11BD63CF21FD54A8D1C7011355D616A /* SnSRestKit.swift in Sources */,
-				20DF449F1EB9106E001BC589 /* SnSRestServer.swift in Sources */,
+				20DF449F1EB9106E001BC589 /* SnSRestHTTPSessionManager.swift in Sources */,
 				C8D5AD1326888256EFFF110D9A44C314 /* SnSRestKitManager.swift in Sources */,
 				7AD974741EB254D100E36161 /* SnSRestRequestController.swift in Sources */,
 				2046948E1F3E103E00A51408 /* SnSRestRequestResponseSerializable.swift in Sources */,

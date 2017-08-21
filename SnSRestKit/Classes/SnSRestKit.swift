@@ -89,4 +89,8 @@ final public class SnSRestKit {
         self._coreManager?.requestResponseSerializer = serializer
     }
     
+    public static func setRequestSessionManager(sessionManager: SnSRestRequestSessionManager) {
+        self._coreManager?.requestSessionManager = sessionManager
+    }
+    
 }

@@ -8,16 +8,23 @@
 
 import Foundation
 
-public enum SnSError: Error {
-    case defaultError
-    case unknownError
+public typealias ErrorType = (Int, String)
+
+public enum SnSError: Int, Error {
+    
+    case internalError = -1
+    case unknownError = -3
+    
+    public var localizedError: ErrorType {
+        return (self.rawValue, self.localizedDescription)
+    }
     
     public var localizedDescription: String {
         switch self {
-        case .defaultError:
-            return "Default Error"
-        default:
-            return "Undefined error"
+        case .unknownError:
+            return "Unknown error. Treated as fatal error"
+        case .internalError:
+            return "Internal error occured for reason: "
         }
     }
 }
